@@ -1,0 +1,55 @@
+#***Code created by Iqraqkamal @ 9.56pm 25 September 2021
+#import numpy for calculation and matplotlib for visualisation
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+#Lets try with a simple imput data - a list with 3 elements
+
+inputs = [10,2,30]
+
+# for each neuron you will require a bias and also a weight ( remember y = mx + c ) where m is the weight and c is
+# the bias
+# lets intiatet randowm weight
+
+weight = [0.2,0.4,0.1] # 3 elements of weights
+bias = 2 # we initially put bias as 2
+
+# at a single neuron , we will take into calculation from 3 different input with its own weight
+
+# Basically (Input [i] * weight * [i])+ bias, where i is the iterataion of each element is both list, using for loops
+
+neuron1 = []
+for i in range(len(inputs)):
+    output = inputs[i]*weight[i]
+    neuron1.append(output)
+
+layer1neuroan = sum(neuron1) + bias
+print(layer1neuroan) # calculation at our first neuron witn 3 input,
+#let say we want to have 3 neurons in the first layer, meaning, repeat the same process, but make sure you initiate
+# difference weight and bias and put it in the list form
+weight2 = [0.1,0.3,0.9]
+weight3 = [0.4,0.5,0.6]
+bias2 = 4
+bias3 = 5
+
+weights = [weight,weight2,weight3]
+biases = [bias,bias2,bias3]
+
+#Initatie our layer output
+layer_output = []
+
+# to iterarate over 3 lists simultaneously we are going to utilise zip
+
+for  neuron_weight, neuron_bias in zip(weights,biases): #iterate over weights and bias that we have , neuron weight =
+    # weight[i] and neuron_ bias = biases[i]
+    neuron_output = 0 # declaring new output
+    print(neuron_bias, neuron_weight)
+    for n_input, weigght in zip(inputs,neuron_weight): #weigght = weights[i][j] - element inside nested list,
+        # n_input = elemenet inside out input list
+        print(n_input,weigght)
+        neuron_output = n_input*weigght
+    neuron_output = neuron_output +  neuron_bias
+    layer_output.append(neuron_output)
+
+print (layer_output)
